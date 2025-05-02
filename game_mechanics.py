@@ -1,0 +1,1 @@
+print('game mecahnics file')
