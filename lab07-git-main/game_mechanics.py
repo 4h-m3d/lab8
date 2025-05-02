@@ -3,6 +3,7 @@
 #  Game Mechanics
 #    Student A (team lead)
 #---------------------------------------
+categories=["maths", "physics", "computer", "chemistry", "english"]
 
 def welcome_message():
     """
@@ -13,8 +14,7 @@ def welcome_message():
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    print("Welcome to the start of the game!")
     #------------------------
 #---------------------------------------
     
@@ -30,10 +30,12 @@ def choose_category(categories):
     """
     #------------------------
     # Add your code here
+    choice = input("Choose a category: ")
+    while choice not in categories:
+        print("category not valid")
+        choice = input("Choose a category: ")
+    return choice
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
 #---------------------------------------
 
 def display_score(score, round_number):
@@ -48,10 +50,9 @@ def display_score(score, round_number):
     """
     #------------------------
     # Add your code here
+    print("score: ", score)
+    print("round number: ", round_number)
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
 #---------------------------------------
     
 def game_over_message(final_score):
@@ -65,8 +66,7 @@ def game_over_message(final_score):
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    print("game over ",final_score)
     #------------------------
 
 #---------------------------------------
@@ -82,8 +82,8 @@ def run_game_rounds(categories):
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    for i in range(5):
+        choose_category(categories)
     #------------------------
 
 #---------------------------------------
@@ -101,8 +101,9 @@ def validate_answer(player_answer, correct_answer):
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    if player_answer == correct_answer:
+        return True
+    return False
     #------------------------
 
 #---------------------------------------
@@ -120,8 +121,9 @@ def update_score(score, correct):
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    if correct:
+        score +=1
+    return score
     #------------------------
 
 #---------------------------------------
@@ -138,9 +140,10 @@ def next_round(round_number):
     """
     #------------------------
     # Add your code here
+    round_number +=1
+    return round_number
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+
 
 #---------------------------------------
 
@@ -156,8 +159,9 @@ def check_game_over(incorrect_answers):
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    if incorrect_answers == 3:
+        return True
+    return False
     #------------------------
 
 #---------------------------------------
@@ -171,8 +175,12 @@ def restart_or_exit():
     """
     #------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
+    user_choice = input("Do you want to restart the game (1) or exit (2)?")
+    if user_choice == "1":
+        welcome_message()
+        run_game_rounds(categories)
+    else:
+        print("thanks for playing!")
     #------------------------
 
 #---------------------------------------
